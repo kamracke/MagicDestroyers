@@ -24,14 +24,9 @@ namespace MagicDestroyers.Characters.Spellcasters
             } 
             set 
             {
-                if (value >= 0)
-                {
-                    abilityPoints = value;
-                }
-                else
-                {
+                if (value < 0)
                     throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
-                }
+                abilityPoints = value;
             } 
         }
 
@@ -104,6 +99,8 @@ namespace MagicDestroyers.Characters.Spellcasters
             }
             set
             {
+                if (value.ArmorPoints > 10)
+                    throw new ArgumentOutOfRangeException(string.Empty, "Mage can't wear anything greater than 9");
                 bodyArmor = value;
             }
         }
