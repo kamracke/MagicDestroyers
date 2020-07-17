@@ -1,37 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MagicDestroyers.Equipment.Weapons;
-using MagicDestroyers.Equipment.Armor;
+using MagicDestroyers.Enums
+using MagicDestroyers.Equipment.Weapons.Blunt;
+using MagicDestroyers.Equipment.Armor.Light;
 
 namespace MagicDestroyers.Characters.Spellcasters
 {
-    class Mage
+    public class Mage
     {
+        private const Faction DEFAULT_FACTION = Enums.Faction.Spellcaster;
+        private const int DEFAULT_LEVEL = 1;
+        private const int DEFAULT_HEALTH_POINTS = 120;
+        private const int DEFAULT_ABILITY_POINTS = 100;
+        private const string DEFAULT_NAME = "Midge";
+
+        private readonly ClothRobe DEFAULT_BODY_ARMOR = new ClothRobe();
+        private readonly Staff DEFAULT_WEAPON = new Staff();
+
+        private Faction faction;
+
         private int abilityPoints;
-        private string faction;
         private int healthPoints;
         private int level;
+
         private string name;
+
         private ClothRobe bodyArmor;
         private Staff weapon;
+
+        
 
         public int AbilityPoints 
         { 
             get 
             {
-                return abilityPoints;
+                return this.abilityPoints;
             } 
             set 
             {
-                if (value >= 0)
-                {
-                    abilityPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
-                }
+                if (value >= 0 && value <= 100)
+                    this.abilityPoints = value;
+                throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 100.");
+                
             } 
         }
 
@@ -39,18 +48,14 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return healthPoints;
+                return this.healthPoints;
             }
             set
             {
-                if (value >= 0)
-                {
-                    healthPoints = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
-                }
+                if (value >= 0 && value <= 120)
+                    this.healthPoints = value;
+                throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 120.");
+                
             }
         }
 
@@ -58,18 +63,13 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return level;
+                return this.level;
             }
             set
             {
                 if (value >= 0)
-                {
-                    level = value;
-                }
-                else
-                {
-                    throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
-                }
+                    this.level = value;
+                throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
             }
         }
 
@@ -77,22 +77,22 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return name;
+                return this.name;
             }
             set
             {
-                name = value;
+                this.name = value;
             }
         }
-        public string Faction
+        public Faction Faction
         {
             get
             {
-                return faction;
+                return this.faction;
             }
             set
             {
-                faction = value;
+                this.faction = value;
             }
         }
 
@@ -100,11 +100,11 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return bodyArmor;
+                return this.bodyArmor;
             }
             set
             {
-                bodyArmor = value;
+                this.bodyArmor = value;
             }
         }
 
@@ -112,17 +112,35 @@ namespace MagicDestroyers.Characters.Spellcasters
         {
             get
             {
-                return weapon;
+                return this.weapon;
             }
             set
             {
-                weapon = value;
+                this.weapon = value;
             }
         }
 
         public Mage()
+            : this(DEFAULT_NAME, DEFAULT_LEVEL)
         {
 
+        }
+
+        public Mage(string name, int level)
+            : this(name, level, DEFAULT_HEALTH_POINTS)
+        {
+
+        }
+
+        public Mage(string name, int level, int healthpoints)
+        {
+            this.AbilityPoints = DEFAULT_ABILITY_POINTS;
+            this.Faction = DEFAULT_FACTION;
+            this.HealthPoints = healthpoints;
+            this.Level = level;
+            this.Name = name;
+            this.BodyArmor = DEFAULT_BODY_ARMOR;
+            this.Weapon = DEFAULT_WEAPON;
         }
 
         public void ArcaneWrath()

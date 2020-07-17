@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace MagicDestroyers.Equipment.Armor
+namespace MagicDestroyers.Equipment.Armor.Light
 {
     public class ClothRobe
     {
+        private const int DEFAULT_ARMOR_POINTS = 10;
+
         private int armorPoints;
 
         public int ArmorPoints
@@ -29,8 +29,14 @@ namespace MagicDestroyers.Equipment.Armor
         }
 
         public ClothRobe()
+            : this(DEFAULT_ARMOR_POINTS)
         {
 
+        }
+
+        public ClothRobe(int armorPoints)
+        {
+            this.ArmorPoints = armorPoints;
         }
     }
 }
