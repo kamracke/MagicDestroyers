@@ -1,11 +1,11 @@
 ﻿using System;
 using MagicDestroyers.Enums;
-using MagicDestroyers.Equipment.Weapons.Sharp;
+using MagicDestroyers.Equipment.Weapon.Sharp;
 using MagicDestroyers.Equipment.Armor.Heavy;
 
 namespace MagicDestroyers.Characters.Melee
 {
-    public class Warrior
+    public class Warrior : Melee
     {
         private const Faction DEFAULT_FACTION = Enums.Faction.Melee;
         private const int DEFAULT_LEVEL = 1;
@@ -16,84 +16,84 @@ namespace MagicDestroyers.Characters.Melee
         private readonly Chainlink DEFAULT_BODY_ARMOR = new Chainlink();
         private readonly Axe DEFAULT_WEAPON = new Axe();
 
-        private Faction faction;
+        //private Faction faction;
 
-        private int abilityPoints;
-        private int healthPoints;
-        private int level;
+        //private int abilityPoints;
+        //private int healthPoints;
+        //private int level;
 
-        private string name;
+        //private string name;
 
         private Chainlink bodyArmor;
         private Axe weapon;
 
-        public Faction Faction
-        {
-            get
-            {
-                return this.faction;
-            }
-            set
-            {
-                this.faction = value;
-            }
-        }
+        //public Faction Faction
+        //{
+        //    get
+        //    {
+        //        return this.faction;
+        //    }
+        //    set
+        //    {
+        //        this.faction = value;
+        //    }
+        //}
 
-        public int AbilityPoints
-        {
-            get
-            {
-                return this.abilityPoints;
-            }
-            set
-            {
-                if (value >= 0 && value <=10)
-                    this.abilityPoints = value;
-                throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 10.");
+        //public int AbilityPoints
+        //{
+        //    get
+        //    {
+        //        return this.abilityPoints;
+        //    }
+        //    set
+        //    {
+        //        if (value >= 0 && value <=10)
+        //            this.abilityPoints = value;
+        //        throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 10.");
 
-            }
-        }
+        //    }
+        //}
 
-        public int HealthPoints
-        {
-            get
-            {
-                return this.healthPoints;
-            }
-            set
-            {
-                if (value >= 0 && value <= 100)
-                    this.healthPoints = value;
-                throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 100.");
+        //public int HealthPoints
+        //{
+        //    get
+        //    {
+        //        return this.healthPoints;
+        //    }
+        //    set
+        //    {
+        //        if (value >= 0 && value <= 100)
+        //            this.healthPoints = value;
+        //        throw new ArgumentOutOfRangeException(string.Empty, "Inappropriate value, the value should be >= 0 and <= 100.");
 
-            }
-        }
+        //    }
+        //}
 
-        public int Level
-        {
-            get
-            {
-                return this.level;
-            }
-            set
-            {
-                if (value >= 0)
-                    this.level = value;
-                throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
-            }
-        }
+        //public int Level
+        //{
+        //    get
+        //    {
+        //        return this.level;
+        //    }
+        //    set
+        //    {
+        //        if (value >= 0)
+        //            this.level = value;
+        //        throw new ArgumentOutOfRangeException(string.Empty, "The value must be greater than or equal to 0");
+        //    }
+        //}
 
-        public string Name
-        {
-            get
-            {
-                return this.name;
-            }
-            set
-            {
-                this.name = value;
-            }
-        }
+        //public string Name
+        //{
+        //    get
+        //    {
+        //        return this.name;
+        //    }
+        //    set
+        //    {
+        //        this.name = value;
+        //    }
+        //}
 
         public Chainlink BodyArmor
         {
